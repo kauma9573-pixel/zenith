@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ZENiTh Team | Киберспортивная Организация</title>
+    <style>
+        /* Киберспортивная база в стиле Cybershoke */
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+        
+        body {
+            background-color: #08080a; /* Ультра-темный фон */
+            color: #ffffff;
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Светящаяся навигация (Меню) */
+        header {
+            width: 100%;
+            padding: 20px 50px;
+            background: rgba(11, 11, 14, 0.9);
+            border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            backdrop-filter: blur(10px);
+        }
+
+        .nav-logo {
+            font-size: 1.5rem;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: #00ffcc;
+            text-shadow: 0 0 10px rgba(0, 255, 204, 0.3);
+        }
+
+        .nav-links a {
+            color: #a0a0a5;
+            text-decoration: none;
+            margin-left: 25px;
+            font-weight: 500;
+            text-transform: uppercase;
+            font-size: 0.9rem;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #8a2be2;
+            text-shadow: 0 0 8px rgba(138, 43, 226, 0.6);
+        }
+
+        /* Главный баннер (Hero Section) */
+        .hero {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 80px 20px;
+            background: radial-gradient(circle at center, rgba(138, 43, 226, 0.15) 0%, transparent 70%);
+        }
+
+        .main-logo {
+            width: 180px;
+            height: auto;
+            border-radius: 16px;
+            box-shadow: 0 0 35px rgba(138, 43, 226, 0.5);
+            margin-bottom: 25px;
+        }
+
+        h1 {
+            font-size: 3.5rem;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            color: #00ffcc;
+            text-shadow: 0 0 15px rgba(0, 255, 204, 0.4);
+            margin-bottom: 15px;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            color: #a0a0a5;
+            max-width: 600px;
+            margin-bottom: 35px;
+        }
+
+        /* Контейнер для двух кнопок соцсетей */
+        .social-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        /* Общий стиль для крутых кнопок */
+        .btn {
+            display: inline-block;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 14px 30px;
+            font-weight: bold;
+            border-radius: 8px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: 0.3s;
+            border: none;
+            cursor: pointer;
+        }
+
+        .btn:hover {
+            transform: translateY(-3px);
+        }
+
+        /* Фиолетово-зеленая кнопка Дискорда */
+        .btn-discord {
+            background: linear-gradient(45deg, #8a2be2, #00ffcc);
+            box-shadow: 0 4px 15px rgba(0, 255, 204, 0.2);
+        }
+
+        .btn-discord:hover {
+            box-shadow: 0 6px 25px rgba(138, 43, 226, 0.6);
+        }
+
+        /* Красно-бордовая кнопка Ютуба */
+        .btn-youtube {
+            background: linear-gradient(45deg, #ff0000, #b30000);
+            box-shadow: 0 4px 15px rgba(255, 0, 0, 0.2);
+        }
+
+        .btn-youtube:hover {
+            box-shadow: 0 6px 25px rgba(255, 0, 0, 0.6);
+        }
+
+        /* Секции контента (база для второй части) */
+        .section {
+            max-width: 1200px;
+            width: 90%;
+            margin: 0 auto;
+            padding: 60px 0;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            text-align: center;
+            color: #ffffff;
+            border-bottom: 2px solid #8a2be2;
+            display: inline-block;
+            padding-bottom: 5px;
+        }
+
+        .center-wrapper {
+            text-align: center;
+        }
+
+        /* Сетка для карточек игроков */
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+            margin-top: 20px;
+        }
+
+        /* Карточка игрока */
+        .player-card {
+            background: #111114;
+            border: 1px solid rgba(138, 43, 226, 0.2);
+            border-radius: 12px;
+            padding: 30px 20px;
+            text-align: center;
+            transition: 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .player-card:hover {
+            transform: translateY(-5px);
+            border-color: #00ffcc;
+            box-shadow: 0 0 25px rgba(0, 255, 204, 0.2);
+        }
+
+        .player-avatar {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(45deg, #8a2be2, #00ffcc);
+            border-radius: 50%;
+            margin: 0 auto 20px auto;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #ffffff;
+        }
+
+        .player-name {
+            font-size: 1.3rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+
+        .player-role {
+            font-size: 0.85rem;
+            color: #00ffcc;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .player-stats {
+            font-size: 0.8rem;
+            color: #a0a0a5;
+            background: rgba(255,255,255,0.03);
+            padding: 8px;
+            border-radius: 6px;
+        }
+
+        footer {
+            background: #050507;
+            padding: 30px;
+            text-align: center;
+            color: #505055;
+            font-size: 0.85rem;
+            border-top: 1px solid rgba(255,255,255,0.02);
+            margin-top: 60px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Навигационная панель (Шапка) -->
+    <header>
+        <div class="nav-logo">ZNTH</div>
+        <nav class="nav-links">
+            <a href="#about">О клане</a>
+            <a href="#roster">Состав</a>
+            <a href="https://discord.gg/864GUybA5" target="_blank">Дискорд</a>
+            <a href="https://www.youtube.com/@egorsunrise6792" target="_blank">YouTube</a>
+        </nav>
+    </header>
+
+    <!-- Главная секция с кнопками соцсетей -->
+    <section class="hero">
+        <img src="logo.png" alt="ZENiTh Team Logo" class="main-logo">
+        <h1>ZENiTh Team</h1>
+        <p>Будущее норвежского и мирового киберспорта в CS2. Тренируемся из дома, побеждаем на серверах, строим команду мечты.</p>
+        
+        <div class="social-buttons">
+            <a href="https://discord.gg/864GUybA5" class="btn btn-discord" target="_blank">Вступить в Дискорд</a>
+            <a href="https://www.youtube.com/@egorsunrise6792" class="btn btn-youtube" target="_blank">Наш YouTube канал</a>
+        </div>
+    </section>
+    <!-- Раздел "О клане" -->
+    <section class="section" id="about">
+        <div class="center-wrapper">
+            <h2 class="section-title">О Нашем Проекте</h2>
+        </div>
+        <p style="text-align: center; color: #a0a0a5; max-width: 800px; margin: 0 auto; font-size: 1.1rem;">
+            ZENiTh Team — это независимый киберспортивный тег, созданный для объединения сильнейших стрелков. Мы не просто играем, мы анализируем ошибки, учим раскидки, развиваем мувмент и держим планку хедшотов на профессиональном уровне. Наша цель — построить сыгранный состав для доминирования на онлайн-турнирах.
+        </p>
+    </section>
+
+    <!-- Раздел Состава (Карточки на 5 игроков) -->
+    <section class="section" id="roster">
+        <div class="center-wrapper">
+            <h2 class="section-title">Текущий Состав</h2>
+        </div>
+        
+        <div class="team-grid">
+            <!-- 1. Твоя карточка Капитана -->
+            <div class="player-card">
+                <div class="player-avatar" style="text-shadow: 0 0 10px rgba(255,255,255,0.3);">E</div>
+                <div class="player-name">ZNTH-SUNR1SE</div>
+                <div class="player-role">Капитан / IGL</div>
+                <div class="player-stats">300 FPS | ~72% headshot</div>
+            </div>
+
+            <!-- 2. Свободное место -->
+            <div class="player-card" style="opacity: 0.6; border-style: dashed;">
+                <div class="player-avatar" style="background: #202025;">?</div>
+                <div class="player-name">Игрок #2</div>
+                <div class="player-role">Свободное место</div>
+                <div class="player-stats">Ожидание набора...</div>
+            </div>
+
+            <!-- 3. Свободное место -->
+            <div class="player-card" style="opacity: 0.6; border-style: dashed;">
+                <div class="player-avatar" style="background: #202025;">?</div>
+                <div class="player-name">Игрок #3</div>
+                <div class="player-role">Свободное место</div>
+                <div class="player-stats">Ожидание набора...</div>
+            </div>
+
+            <!-- 4. Свободное место -->
+            <div class="player-card" style="opacity: 0.6; border-style: dashed;">
+                <div class="player-avatar" style="background: #202025;">?</div>
+                <div class="player-name">Игрок #4</div>
+                <div class="player-role">Свободное место</div>
+                <div class="player-stats">Ожидание набора...</div>
+            </div>
+
+            <!-- 5. Свободное место -->
+            <div class="player-card" style="opacity: 0.6; border-style: dashed;">
+                <div class="player-avatar" style="background: #202025;">?</div>
+                <div class="player-name">Игрок #5</div>
+                <div class="player-role">Свободное место</div>
+                <div class="player-stats">Ожидание набора...</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Подвал сайта -->
+    <footer>
+        &copy; 2026 ZENiTh Team Esports. Все права защищены. Powered by Acer Nitro V 15.
+    </footer>
+
+</body>
+</html>
